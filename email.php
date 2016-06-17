@@ -1,23 +1,42 @@
 <?php
-       // from the form
-       $name = trim(strip_tags($_POST['name']));
-       $email = trim(strip_tags($_POST['email']));
-       $message = htmlentities($_POST['message']);
 
-       // set here
-       $subject = "Hi there!";
-       $to = 'spgreenbaum@gmail.com';
+$EmailTo = "spgreenbaum@gmail.com";
+$Subject = “Hello”;
+$Name = Trim(stripslashes($_POST['Name'])); 
+$Tel = Trim(stripslashes($_POST['Tel'])); 
+$Email = Trim(stripslashes($_POST['Email'])); 
+$Message = Trim(stripslashes($_POST['Message'])); 
 
-       $body = <<<HTML
-$message
-HTML;
+// validation
+$validationOK=true;
+if (!$validationOK) {
+  print "<meta http-equiv=\"refresh\" content=\"0;URL=error.htm\">";
+  exit;
+}
 
-       $headers = "From: $email\r\n";
-       $headers .= "Content-type: text/html\r\n";
+// prepare email body text
+$Body = "";
+$Body .= "Name: ";
+$Body .= $Name;
+$Body .= "\n";
+$Body .= "Tel: ";
+$Body .= $Tel;
+$Body .= "\n";
+$Body .= "Email: ";
+$Body .= $Email;
+$Body .= "\n";
+$Body .= "Message: ";
+$Body .= $Message;
+$Body .= "\n";
 
-       // send the email
-       mail($to, $subject, $body, $headers);
+// send email 
+$success = mail($EmailTo, $Subject, $Body, "From: <$EmailFrom>");
 
-       // redirect afterwords, if needed
-       header('Location: thanks.html');
+// redirect to success page 
+if ($success){
+  print "<meta http-equiv=\"refresh\" content=\"0;URL=contactthanks.php\">";
+}
+else{
+  print "<meta http-equiv=\"refresh\" content=\"0;URL=error.htm\">";
+}
 ?>
