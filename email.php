@@ -1,11 +1,16 @@
 <?php
 
 $EmailTo = "spgreenbaum@gmail.com";
-$Subject = “Hello”;
-$Name = Trim(stripslashes($_POST['Name'])); 
+$Subject = “Thank You For the Inquiry”;
+$Name = Trim(stripslashes($_POST['name'])); 
 $Tel = Trim(stripslashes($_POST['Tel'])); 
-$Email = Trim(stripslashes($_POST['Email'])); 
-$Message = Trim(stripslashes($_POST['Message'])); 
+$Email = Trim(stripslashes($_POST['email'])); 
+$Message = Trim(stripslashes($_POST['message'])); 
+$headers = 'From: ' . $Email . "\r\n" .
+    'Reply-To: ' . $Email . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
 
 // validation
 $validationOK=true;
@@ -18,9 +23,9 @@ if (!$validationOK) {
 $Body = "";
 $Body .= "Name: ";
 $Body .= $Name;
-$Body .= "\n";
-$Body .= "Tel: ";
-$Body .= $Tel;
+//$Body .= "\n";
+//$Body .= "Tel: ";
+//$Body .= $Tel;
 $Body .= "\n";
 $Body .= "Email: ";
 $Body .= $Email;
@@ -30,11 +35,11 @@ $Body .= $Message;
 $Body .= "\n";
 
 // send email 
-$success = mail($EmailTo, $Subject, $Body, "From: <$EmailFrom>");
+$success = mail($EmailTo, $Subject, $Body, $headers);
 
 // redirect to success page 
 if ($success){
-  print "<meta http-equiv=\"refresh\" content=\"0;URL=contactthanks.php\">";
+  print "<meta http-equiv=\"refresh\" content=\"0;URL=index.html#contact\">";
 }
 else{
   print "<meta http-equiv=\"refresh\" content=\"0;URL=error.htm\">";
