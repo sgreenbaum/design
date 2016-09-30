@@ -67,6 +67,10 @@ function stop(){
    clearTimeout(animate);
 }
 
+$(window).on('load', function () {
+    AOS.refresh();
+});
+
 $( window ).scroll(function() {
   $( "span" ).css( "display", "inline" );
 });
