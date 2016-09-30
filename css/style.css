@@ -5,6 +5,7 @@
      box-sizing: border-box; /* IE */
 }
 
+
 /* Clear fix hack */
 .clearfix:after {
      content: ".";
@@ -243,6 +244,7 @@ p{
   padding-top: 60%;
   position: relative;
 }
+
 
 .project1{
   background-image: url(../images/Milk_Back_Angled_SideBySide.jpg);
