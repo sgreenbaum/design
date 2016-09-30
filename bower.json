@@ -1,0 +1,13 @@
+{
+  "name": "design",
+  "homepage": "https://github.com/sgreenbaum/design",
+  "authors": [
+    "aaronbretz <abretz@bp-3.com>"
+  ],
+  "description": "Bower for Sophie's site",
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "aos": "^2.1.1"
+  }
+}
