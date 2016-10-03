@@ -1,6 +1,6 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == "GET"){
-	$EmailTo = 'abretz47@gmail.com';
+	$EmailTo = 'spgreenbaum@gmail.com';
 	$Subject = 'Thank You For the Inquiry';
 	$Name = "";
 	$Name = isset($_GET["name"]) ? $_GET["name"] : "UNDEFINED"; 
